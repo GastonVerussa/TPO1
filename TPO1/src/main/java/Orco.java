@@ -19,7 +19,7 @@ public class Orco extends Thread{
         mutex = Mutex;
     }
     
-    public void golpear(){
+    private void golpear(){
         this.vidaPersonaje.setPuntosVida(this.vidaPersonaje.getPuntosVida() - 3);
     } //metodo para golpear al personaje
     

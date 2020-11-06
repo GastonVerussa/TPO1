@@ -20,7 +20,7 @@ public class Curandero extends Thread{
         mutex = Mutex;
     }
     
-    public void curar(){
+    private void curar(){
         this.vidaPersonaje.setPuntosVida(this.vidaPersonaje.getPuntosVida() + 3);
     } //metodo para curar al personaje
     
