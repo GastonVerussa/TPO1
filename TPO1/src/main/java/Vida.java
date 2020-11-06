@@ -21,11 +21,7 @@ public class Vida {
         return puntosVida;
     } 
     
-    public void golpear(){
-        puntosVida = puntosVida - 3;
-    } //metodo para que el orco golpee
-    
-    public void curar(){
-        puntosVida = puntosVida + 3;
-    } //metodo para que el curandero cure
+    public void setPuntosVida(int vidaNueva){
+        puntosVida = vidaNueva;
+    }
 }

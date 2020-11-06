@@ -10,15 +10,19 @@
  */
 public class Orco extends Thread{
     //clase Thread que se va a encargar de simular al orco
-    Vida vidaPersonaje;
+    private final Vida vidaPersonaje;
     
     public Orco(String nombre, Vida vidaPJ){
         super(nombre);
         vidaPersonaje = vidaPJ; //recurso compartido
     }
     
+    public void golpear(){
+        this.vidaPersonaje.setPuntosVida(this.vidaPersonaje.getPuntosVida() - 3);
+    }
+    
     public void run(){
-        vidaPersonaje.golpear();
+        this.golpear();
         System.out.println(Thread.currentThread().getName() + " golpeó al personaje, sus puntos de vida actuales son: "
         + vidaPersonaje.getPuntosVida());
     }

@@ -11,15 +11,18 @@
 public class Curandero extends Thread{
     //Clase que se va a encargar de simular al Curandero
     
-    private Vida vidaPersonaje;
+    private final Vida vidaPersonaje;
     
     public Curandero(String nombre, Vida vidaPJ){
         super(nombre);
         vidaPersonaje = vidaPJ; //recurso compartido
     }
     
+    public void curar(){
+        this.vidaPersonaje.setPuntosVida(this.vidaPersonaje.getPuntosVida() + 3);
+    }
     public void run(){
-        vidaPersonaje.curar();
+        this.curar();
         System.out.println(Thread.currentThread().getName() + " curó al personaje, sus puntos de vida actuales son: "
         + vidaPersonaje.getPuntosVida());
     }
