@@ -12,10 +12,12 @@ public class Curandero extends Thread{
     //Clase que se va a encargar de simular al Curandero
     
     private final Vida vidaPersonaje;
+    private final Object mutex;
     
-    public Curandero(String nombre, Vida vidaPJ){
+    public Curandero(String nombre, Vida vidaPJ, Object Mutex){
         super(nombre);
         vidaPersonaje = vidaPJ; //recurso compartido
+        mutex = Mutex;
     }
     
     public void curar(){
@@ -24,9 +26,11 @@ public class Curandero extends Thread{
     
     public void run(){
         for(int i = 1; i <= 10; i++){
-            this.curar();
-            System.out.println(Thread.currentThread().getName() + " curó al personaje, sus puntos de vida actuales son: "
-            + vidaPersonaje.getPuntosVida());
+            synchronized(mutex){ //sincronizo la parte del código que ingresa a la seccion critica (los puntos de vida)
+                this.curar();
+                System.out.println(Thread.currentThread().getName() + " curó al personaje, sus puntos de vida actuales son: "
+                + vidaPersonaje.getPuntosVida());
+            }
             try{
                 Thread.sleep((int) Math.random() * 10);
             }catch(InterruptedException e){}

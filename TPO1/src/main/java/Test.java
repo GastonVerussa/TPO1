@@ -10,12 +10,13 @@
  */
 public class Test {
     public static void main(String[] args){
-        //Genero el recurso compartido
-        Vida recursoVida = new Vida();
+        
+        Vida recursoVida = new Vida(); //recurso compartido
+        Object mutex = new Object();   //objeto para sincronizar
         
         //Genero los hilos
-        Orco t1 = new Orco("Orco", recursoVida);
-        Curandero t2 = new Curandero("Curandero", recursoVida);
+        Orco t1 = new Orco("Orco", recursoVida, mutex);
+        Curandero t2 = new Curandero("Curandero", recursoVida, mutex);
         
         //Inicio los hilos
         t1.start();
