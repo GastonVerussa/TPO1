@@ -19,11 +19,16 @@ public class Orco extends Thread{
     
     public void golpear(){
         this.vidaPersonaje.setPuntosVida(this.vidaPersonaje.getPuntosVida() - 3);
-    }
+    } //metodo para golpear al personaje
     
     public void run(){
-        this.golpear();
-        System.out.println(Thread.currentThread().getName() + " golpeó al personaje, sus puntos de vida actuales son: "
-        + vidaPersonaje.getPuntosVida());
+        for(int i = 1; i <= 10; i++){
+            this.golpear();
+            System.out.println(Thread.currentThread().getName() + " golpeó al personaje, sus puntos de vida actuales son: "
+            + vidaPersonaje.getPuntosVida());
+            try{
+                Thread.sleep((int) Math.random() * 10);
+            }catch(InterruptedException e){}
+        }
     }
 }
