@@ -21,13 +21,17 @@ public class Vida {
         return puntosVida;
     } 
     
+    public void setPuntosVida(int nuevaVida){
+        puntosVida = nuevaVida;
+    }
+    
     public synchronized void golpear(){
-        puntosVida = puntosVida - 3;
+        this.setPuntosVida(this.getPuntosVida() - 3);
         System.out.println(Thread.currentThread().getName() + " golpeó al personaje, sus puntos de vida actuales son: " + puntosVida);
     } //metodo para que el orco golpee
 
     public synchronized void curar(){
-        puntosVida = puntosVida + 3;
+        this.setPuntosVida(this.getPuntosVida() + 3);
         System.out.println(Thread.currentThread().getName() + " curó al personaje, sus puntos de vida actuales son: " + puntosVida);
     } //metodo para que el curandero cure
 }
